@@ -69,5 +69,3 @@ def dict2X(GUIDES_DICT,cbcs):
         X[key]=np.array(curkey)
     X.index=cbcs
     return X
-
-
