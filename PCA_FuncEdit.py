@@ -39,14 +39,14 @@ guides = cell_ident['guide identity']
 [Ufb,Sfb,Vfb,PCscore] = fb_pca(Y_log, n_components=50, center=True, scale=False)
 ## PC variance explained
 plt.plot(Sfb, label='PC Variance Explained')
-plt.savefig('./Figs/PC_eigens.jpg', dpi=300)
+plt.savefig('./Figs/PC_eigens_Adamson.jpg', dpi=300)
 plt.close()
 
 ## Use PC scores for plotting
 plot_pca = PCscore[['PC1','PC2']]
 plot_pca['Guides'] = guides
 sns.lmplot('PC1','PC2',data=plot_pca,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/PCA.jpg', dpi=300)
+plt.savefig('./Figs/PCA_Adamson.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # t-SNE
@@ -58,7 +58,7 @@ plot_tsne.columns = ['tSNE-1', 'tSNE-2']
 plot_tsne.index = selected_cells
 plot_tsne['Guides'] = guides
 sns.lmplot('tSNE-1','tSNE-2',data=plot_tsne,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/tSNE.jpg', dpi=300)
+plt.savefig('./Figs/tSNE_Adamson.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # LASSO 
@@ -80,9 +80,9 @@ PC_rank = pd.DataFrame({'PCs':['PC'+str(x+1) for x in range(50)],
 PC_rank = PC_rank.loc[np.argsort(-PC_rank['Importance'], )]
 PC_rank.index = range(1,51)
 plt.plot(PC_rank['Importance'], label='PC Importance')
-plt.savefig('./Figs/PC_importance.jpg', dpi=300)
+plt.savefig('./Figs/PC_importance_Adamson.jpg', dpi=300)
 plt.close()
-PC_rank.to_csv('./Figs/PC_importance.csv')
+PC_rank.to_csv('./Figs/PC_importance_Adamson.csv')
 #------------------------------------------------------------------------#
 # PCA with important PCs
 selected_PCs = list(PC_rank['PCs'][0:30]) # Previous = 10
@@ -91,7 +91,7 @@ New_feature_Y = PCscore[selected_PCs].transpose()
 plot_pca = PCscore_new[['PC1','PC2']]
 plot_pca['Guides'] = guides
 sns.lmplot('PC1','PC2',data=plot_pca,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/PCA_new.jpg', dpi=300)
+plt.savefig('./Figs/PCA_new_Adamson.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # tSNE with important PCs
@@ -103,7 +103,7 @@ plot_tsne.columns = ['tSNE-1', 'tSNE-2']
 plot_tsne.index = selected_cells
 plot_tsne['Guides'] = guides
 sns.lmplot('tSNE-1','tSNE-2',data=plot_tsne,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/tSNE_new.jpg', dpi=300)
+plt.savefig('./Figs/tSNE_new_Adamson.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # tSNE with important PCs
@@ -116,7 +116,7 @@ plot_tsne.columns = ['tSNE-1', 'tSNE-2']
 plot_tsne.index = selected_cells
 plot_tsne['Guides'] = guides
 sns.lmplot('tSNE-1','tSNE-2',data=plot_tsne,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/tSNE_PC1-4_removed.jpg', dpi=300)
+plt.savefig('./Figs/tSNE_PC1-4_removed_Adamson.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 '''
@@ -170,13 +170,13 @@ for ii in range(len(guides)):
 [Ufb,Sfb,Vfb,PCscore] = fb_pca(Y_log, n_components=100, center=True, scale=False)
 ## PC variance explained
 plt.plot(Sfb, label='PC Variance Explained')
-plt.savefig('./Figs/PC_eigens_Dixit_merge_xxxGuide.jpg', dpi=300)
+plt.savefig('./Figs/PC_eigens_Dixit.jpg', dpi=300)
 plt.close()
 ## Use PC scores for plotting
 plot_pca = PCscore[['PC1','PC2']]
 plot_pca['Guides'] = guides
 sns.lmplot('PC1','PC2',data=plot_pca,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/PCA_Dixit_merge_xxxGuide.jpg', dpi=300)
+plt.savefig('./Figs/PCA_Dixit.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # t-SNE
@@ -188,7 +188,7 @@ plot_tsne.columns = ['tSNE-1', 'tSNE-2']
 plot_tsne.index = selected_cells
 plot_tsne['Guides'] = guides
 sns.lmplot('tSNE-1','tSNE-2',data=plot_tsne,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/tSNE_Dixit_merge_xxxGuide.jpg', dpi=300)
+plt.savefig('./Figs/tSNE_Dixit.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # LASSO 
@@ -211,9 +211,9 @@ PC_rank = pd.DataFrame({'PCs':['PC'+str(x+1) for x in range(100)],
 PC_rank = PC_rank.loc[np.argsort(-PC_rank['Importance'], )]
 PC_rank.index = range(1,101)
 plt.plot(PC_rank['Importance'], label='PC Importance')
-plt.savefig('./Figs/PC_importance_Dixit_merge_xxxGuide.jpg', dpi=300)
+plt.savefig('./Figs/PC_importance_Dixit.jpg', dpi=300)
 plt.close()
-PC_rank.to_csv('./Figs/PC_importance_Dixit_merge_xxxGuide.csv')
+PC_rank.to_csv('./Figs/PC_importance_Dixit.csv')
 #------------------------------------------------------------------------#
 # PCA with important PCs
 selected_PCs = list(PC_rank['PCs'][0:10])
@@ -222,7 +222,7 @@ New_feature_Y = PCscore[selected_PCs].transpose()
 plot_pca = PCscore_new[['PC1','PC2']]
 plot_pca['Guides'] = guides
 sns.lmplot('PC1','PC2',data=plot_pca,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/PCA_new_Dixit_merge_xxxGuide.jpg', dpi=300)
+plt.savefig('./Figs/PCA_new_Dixit.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # tSNE with important PCs
@@ -234,7 +234,7 @@ plot_tsne.columns = ['tSNE-1', 'tSNE-2']
 plot_tsne.index = selected_cells
 plot_tsne['Guides'] = guides
 sns.lmplot('tSNE-1','tSNE-2',data=plot_tsne,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/tSNE_new_Dixit_merge_xxxGuide.jpg', dpi=300)
+plt.savefig('./Figs/tSNE_new_Dixit.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 # tSNE with important PCs
@@ -247,7 +247,7 @@ plot_tsne.columns = ['tSNE-1', 'tSNE-2']
 plot_tsne.index = selected_cells
 plot_tsne['Guides'] = guides
 sns.lmplot('tSNE-1','tSNE-2',data=plot_tsne,hue='Guides',fit_reg=False, scatter_kws={'s':5})
-plt.savefig('./Figs/tSNE_PC1-4_removed_Dixit_merge_xxxGuide.jpg', dpi=300)
+plt.savefig('./Figs/tSNE_PC1-4_removed_Dixit.jpg', dpi=300)
 plt.close()
 #------------------------------------------------------------------------#
 
